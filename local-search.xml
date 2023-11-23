@@ -42,13 +42,19 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2023/11/16/%E5%9F%B9%E8%AE%AD%E8%AE%B0%E5%BD%95/"/>
-    <url>/2023/11/16/%E5%9F%B9%E8%AE%AD%E8%AE%B0%E5%BD%95/</url>
+    <title>培训记录</title>
+    <link href="/2023/11/18/%E5%9F%B9%E8%AE%AD%E8%AE%B0%E5%BD%95/"/>
+    <url>/2023/11/18/%E5%9F%B9%E8%AE%AD%E8%AE%B0%E5%BD%95/</url>
     
     <content type="html"><![CDATA[<h2 id="第一次培训11-18"><a href="#第一次培训11-18" class="headerlink" title="第一次培训11.18"></a>第一次培训11.18</h2><p>写一个支持四则运算的计算程序<br>输入为num1 op num2,输出炜运算后的结果num3<br>输入的数据都为double类型<br>多考虑可靠性和可拓展性<br>想象成在写一个后台服务的组件<br>Enum类，单例<br>跳跃链表<br>多线程：jvm虚拟机，并发编程的艺术</p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>记录</tag>
+      
+    </tags>
     
   </entry>
   
