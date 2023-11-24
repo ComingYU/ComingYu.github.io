@@ -24,7 +24,7 @@
 <meta property="og:description" content="图Graph类 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576import java.util.ArrayList;import java.util.List;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-23T13:04:55.367Z">
+<meta property="article:modified_time" content="2023-11-24T04:31:05.479Z">
 <meta property="article:author" content="Mingyu Kang">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.2k 字
+          5.3k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          43 分钟
+          45 分钟
         
       </span>
     
@@ -301,7 +301,15 @@
 <li>代码的关键在于每次从周围吸收一条与之邻接且权值最小的边，以及相连的顶点，直到吸收完所有的顶点。<br>Prim算法代码<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.ArrayList;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Prim</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">prim</span><span class="hljs-params">(Graph graph,<span class="hljs-type">int</span> v)</span>&#123;<br>        List&lt;String&gt; result=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<span class="hljs-comment">//存放没每次添加的路径</span><br>        List&lt;Integer&gt; temp=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<span class="hljs-comment">//存放每次遍历到的顶点的索引</span><br>        temp.add(v);<span class="hljs-comment">//先添加第一个点</span><br>        graph.isVisited[v]=<span class="hljs-literal">true</span>;<br>        <span class="hljs-type">int</span> minRoute=Integer.MAX_VALUE;<span class="hljs-comment">//最短边</span><br>        <span class="hljs-type">int</span> nextVertex=<span class="hljs-number">0</span>;<span class="hljs-comment">//下个顶点的索引</span><br>        <span class="hljs-type">int</span> curVertex=<span class="hljs-number">0</span>;<span class="hljs-comment">//当前顶点的索引</span><br>        <span class="hljs-keyword">while</span> (temp.size()&lt;graph.getNumOfVertex())&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;temp.size();j++)&#123;<br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;graph.getNumOfVertex();i++)&#123;<br>                    <span class="hljs-keyword">if</span>(graph.edge[temp.get(j)][i]!=<span class="hljs-number">0</span>&amp;&amp;!graph.isVisited[i]&amp;&amp;graph.edge[temp.get(j)][i]&lt;minRoute)&#123;<br>                        minRoute=graph.edge[temp.get(j)][i];<br>                        nextVertex=i;<br>                        curVertex=temp.get(j);<br>                    &#125;<br>                &#125;<br>            &#125;<span class="hljs-comment">//找到当前加入树中的顶点的最小边，确定下一个加入的顶点</span><br>            graph.isVisited[nextVertex]=<span class="hljs-literal">true</span>;<br>            minRoute=Integer.MAX_VALUE;<span class="hljs-comment">//重新设为最大值</span><br>            temp.add(nextVertex);<br>            result.add(<span class="hljs-string">&quot;&lt;&quot;</span>+graph.getValueByIndex(curVertex)+<span class="hljs-string">&quot;,&quot;</span>+graph.getValueByIndex(nextVertex)+<span class="hljs-string">&quot;&gt;&quot;</span>);<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;各顶点间的连线：&quot;</span>);<br>        <span class="hljs-keyword">for</span>(String e:result) System.out.println(e);<br>        System.out.println();<br>        <span class="hljs-keyword">for</span>(Integer e:temp) System.out.print(graph.getValueByIndex(e)+<span class="hljs-string">&quot; &quot;</span>);<br><br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 运行结果：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java">各顶点间的连线：<br>&lt;A,G&gt;<br>&lt;G,B&gt;<br>&lt;G,E&gt;<br>&lt;E,F&gt;<br>&lt;F,D&gt;<br>&lt;A,C&gt;<br><br>A G B E F D C <span class="hljs-number">10</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>算法思路：  </p>
+<ol>
+<li>找出最优解的性质，并刻画其结构特征（寻找最优解的子问题结构）</li>
+<li>递归地定义最优值（根据子问题结构建立问题的递归式，求解最优值）</li>
+<li>以自底向上的方式计算出最优值</li>
+<li>根据计算最优值时得到的信息，构造最优解<br>例1：矩阵连乘</li>
+</ol>
+<p>例：找出数字三角形中使数字和最大的路径<br>显然，这个问题可以用递归来求解，以下是C语言代码</p>
+
                 
               </div>
             
