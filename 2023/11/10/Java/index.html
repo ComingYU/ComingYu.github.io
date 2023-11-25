@@ -23,11 +23,15 @@
 <meta property="og:site_name" content="ComingYu">
 <meta property="og:description" content="Head first java学习Java的程序结构 类存在于源文件里，方法存在于类里，语句存在于方法中   Java虚拟机启动执行时，会寻找在命令类所指定的类，然后锁定到main方法，每个Java程序都至少有一个类以及一个main()，每个应用程序只有一个main函数。 要执行程序就代表要命令JVM去加载这个类，开始执行他的main()，直到运行到main的所有程序代码结束。 真正被执行的是类。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/f000ce5ddb8e42799994c705c7d7c48f.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/6e5cc09a179c4e0e935455ab34f3c654.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/7dc636714e04401dafb2f9c57c373dfa.png">
 <meta property="article:published_time" content="2023-11-09T23:33:58.000Z">
-<meta property="article:modified_time" content="2023-11-22T03:19:26.444Z">
+<meta property="article:modified_time" content="2023-11-25T01:58:35.524Z">
 <meta property="article:author" content="Mingyu Kang">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/f000ce5ddb8e42799994c705c7d7c48f.png">
   
   
   
@@ -220,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k 字
+          4.2k 字
         
       </span>
     
@@ -231,7 +235,7 @@
         
         
         
-          24 分钟
+          35 分钟
         
       </span>
     
@@ -351,6 +355,22 @@ Java中integer和Boolean两种类型并不相容，，这么写在Java中是不�
 <li>使用反射的方式来创建类的示例、访问类的字段或调用类的方法</li>
 <li>初始化一个类的子类</li>
 <li>启动类的主方法，如果一个类在初始化的过程中遇到了异常，该类将被标记为初始化失败，后续对该类的引用将触发初始化异常。</li>
+</ul>
+<h3 id="java内存结构"><a href="#java内存结构" class="headerlink" title="java内存结构"></a>java内存结构</h3><p><img src="https://img-blog.csdnimg.cn/f000ce5ddb8e42799994c705c7d7c48f.png" srcset="/img/loading.gif" lazyload alt="image"><br> <img src="https://img-blog.csdnimg.cn/6e5cc09a179c4e0e935455ab34f3c654.png" srcset="/img/loading.gif" lazyload alt="image"><br> <strong><code>栈</code><strong>：<br> 特性：先进后出、</strong>储存对基本数据类型的变量和对象的引用</strong>、大小固定，由系统预先定义。<br> 存储内容：方法调用时，每个方法都会在栈上创建一个栈帧，用于存储局部变量、方法参数、返回地址以及方法执行过程中的临时数据；栈上保存的数据时线程私有的，每个线程都有自己的栈<br> 生命周期：栈上的数据的生命周期与方法的调用周期相同，当方法执行完毕时，栈帧会被弹出，其中的数据也会被释放<br> 效率：由于栈上的操作仅涉及到了指针的移动，访问的速度相对较快<br> <strong><code>堆</code><strong>：<br>特性：用于动态分配的内存区域，</strong>存储的时对象实例和数组</strong>；多个线程共享堆，因此是线程共享的区域。<br>存储内容：包括由“new”关键字创建的对象实例和数组；对象本身。<br>生命周期：堆上的对象的生命周期不受限于方法的生命周期，需要通垃圾回收器收集，当对象不在被引用使时，垃圾回收器将会回收它们占用的内存。<br>效率：由于堆上的内存分配和回收涉及到复杂的算法，因此相对于栈上的操作，堆上的操作较慢。<br><strong><code>方法区</code><strong>：<br>线程共享，存放已被加载的的类的信息、常量、静态变量、即时编译器编译后的代码等信息。</strong>在Java8之前的版本，方法区是永久代的一部分，但是由于永久代容易发生内存泄漏和溢出问题，因此在Java8及之后的版本方法区的实现被移到了本地内存中，不再是jvm堆内存的一部分，这个本地内存被称为元空间。</strong><br><strong><code>元数据</code></strong><br>元数据（metadata）是指描述数据的数据，或者说是关于数据的信息。在Java中，元数据通常指的是类的元数据信息，包括类的结构、方法、字段、注释等。元数据是的jvm可以了解和管理运行时加载类的结构，这对于Java的反射机制、动态代理、注解处理器等特性都至关重要。<br>**<code>元空间</code>**：<br>元空间是方法区的一种实现，主要的目的是解决永久代的一些问题，不同于永久代，元空间不会设置一个固定的大小，而是会根据应用程序的需要动态地调整。特点包括：动态大小、GC的变化、本地内存。<br><strong><code>本地方法栈</code></strong><br>Native关键字修饰的方法，都会调用底层的c语言库，和JNI接口（Java Native Interface），目的是拓展Java的使用，融合不同的语言为Java所用。<br><img src="https://img-blog.csdnimg.cn/7dc636714e04401dafb2f9c57c373dfa.png" srcset="/img/loading.gif" lazyload alt="image">  </p>
+<h3 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h3><p>jvm中的堆一般分为三大部分：新生代、老年代、永久代（Java8中移除）  </p>
+<ol>
+<li><strong>新生代</strong>：<br>用来存放新生的对象，一般占据1&#x2F;3的堆空间<br>新生代又分为三个区：Eden、S0、S1（SurvivorFrom、SurvivorTo）<br><strong>Eden</strong>：新对象的出生地（如果对象占用的内存很大，则直接分配到老年代）当Eden区内存不够时，会触发MinorGC，对新生代进行一次垃圾回收。<br><strong>SurvivorFrom</strong>:上一次GC的幸存者，作为这一次GC的被扫描者<br><strong>SurvivorTo</strong>：保留了一次MinorGC的幸存者</li>
+</ol>
+<ul>
+<li>三个区的比例为8：1：1，两个幸存者区复制后发生交换，空的就是SurviorTo区，jvm每次只会用Eden和一块Survivor区来为对象服务,所以新生代的实际可用空间只有90%</li>
+<li>当jvm无法为新建的对象分配内存空间的时候（Eden满了）MinorGC被触发</li>
+</ul>
+<ol start="2">
+<li><strong>老年代</strong>：</li>
+</ol>
+<ul>
+<li>老年代的对象比较稳定，所以MajorGC不会频繁执行。</li>
+<li>在进行MajorGC前一般都先进行了一次MinorGC，使得有新生代的对象进入老年代，导致空间不够用时才触发；当无法找到足够大的连续空间分配给新创建的较大对象时也会提前触发一次MajorGC</li>
 </ul>
 
                 
